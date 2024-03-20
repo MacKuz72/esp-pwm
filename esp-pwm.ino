@@ -561,6 +561,15 @@ void loop()
     last_loop_time = millis();
   }
 
+
+  ledcWrite(Lampa1.pPWMChannel, Lampa1.setPWM());
+  ledcWrite(Lampa2.pPWMChannel, Lampa2.setPWM());
+  ledcWrite(Lampa3.pPWMChannel, Lampa3.setPWM());
+  ledcWrite(Lampa4.pPWMChannel, Lampa4.setPWM());
+  ledcWrite(Lampa5.pPWMChannel, Lampa5.setPWM());
+  ledcWrite(Lampa6.pPWMChannel, Lampa6.setPWM());
+  ledcWrite(Lampa7.pPWMChannel, Lampa7.setPWM());
+
   /* Increasing the LED brightness with PWM */
   for (dutyCycle = 0; dutyCycle < MAX_DUTY_CYCLE; dutyCycle++)
   {
