@@ -7,6 +7,9 @@
 #include "BluetoothSerial.h"
 #include "lampy.h"
 
+// test 
+
+
 RTC_DS3231 rtc;
 char daysOfTheWeek[7][5] = {"NIE", "PON", "WTO", "ŚRO", "CZW", "PIĄ", "SOB"};
 char daysOfTheWeekAll[7][15] = {"Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"};
