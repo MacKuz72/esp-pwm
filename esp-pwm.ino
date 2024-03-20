@@ -7,7 +7,7 @@
 #include "BluetoothSerial.h"
 #include "lampy.h"
 
-// test 
+
 
 
 RTC_DS3231 rtc;
