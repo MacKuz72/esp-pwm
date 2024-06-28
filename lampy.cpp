@@ -213,6 +213,14 @@ int Lampa::setPWM()
       // if ( cPWM < 0 ) cPWM = 0;
     }
     natezenie = gamma_22[iPWM];
+    if (iPWM == 0)
+    {
+      run = 0;
+    }
+    else
+    {
+      run = 1;
+    }
     //ledcWrite(_PWMChannel, gamma_22[iPWM]);
     //     pwmWriteHR(P_PWM_B, iPWM);
     //     pwmWriteHR(P_PWM_K, cPWM);
@@ -232,6 +240,15 @@ int Lampa::setPWM()
      Serial.println(natezenie_manual);
      Serial.println(_PWMChannel);
      Serial.println(ledcRead(_PWMChannel));
+    if (natezenie_manual == 0)
+    {
+      run = 0;
+    }
+    else
+    {
+      run = 1;
+    }
+
      return gamma_22[1023 - natezenie_manual];
      //return 1023 - natezenie_manual;
   }

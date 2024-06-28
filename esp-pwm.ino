@@ -34,7 +34,7 @@ BluetoothSerial SerialBT;
 
 #define RGB_red   16
 #define RGB_green 17
-#define RGB_red   18
+#define RGB_blue   18
 
 int dutyCycle;
 /* Setting PWM Properties */
@@ -57,6 +57,8 @@ const byte dataByte = 255;
 char dataRec[dataByte];
 char tempChar[dataByte];
 char dataBT[dataByte] = {0};
+int ekran = 0;
+
 
 Lampa *wskLampa1 = 0;
 
@@ -522,6 +524,283 @@ void setup()
   display.setCursor(0, 20);
   display.print(now.timestamp(DateTime::TIMESTAMP_DATE));
 }
+
+
+void dajEkran()
+{
+  String tmpS = "";
+  char tmp20[20];
+  //char tmp5[5];
+  
+  switch (ekran)
+  {
+  case 0:
+    display.clearDisplay();
+    display.setTextColor(WHITE);
+    display.setTextSize(2);
+    display.setCursor(0, 0);
+    display.print(now.timestamp(DateTime::TIMESTAMP_TIME));
+    display.setCursor(0, 20);
+    display.print(now.timestamp(DateTime::TIMESTAMP_DATE));
+    break;
+  case 1:
+    display.clearDisplay();
+    display.setTextColor(WHITE);
+    display.setTextSize(2);
+    display.setCursor(0,0);
+    display.print("Lampa 1");    
+    display.setCursor(90,0);
+    if ( Lampa1.run == 0)
+    {
+      display.print("OFF");
+    }
+    else
+    {
+      display.print("ON");
+    }  
+    display.setTextSize(1);
+    display.setTextColor(WHITE);
+    display.setCursor(0, 0);
+    sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa1.on_g_start, Lampa1.on_m_start, Lampa1.on_g_stop, Lampa1.on_m_stop);
+    display.setTextSize(1);
+    display.setCursor(0,20);
+    display.print(tmp20);
+    display.setCursor(0,30);
+    sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa1.off_g_start, Lampa1.off_m_start, Lampa1.off_g_stop, Lampa1.off_m_stop);
+    display.print(tmp20);
+    sprintf(tmp20, "%04d,max:%04d", Lampa1.natezenie,Lampa1.natezenie_max);
+    display.setCursor(0,40);
+    display.print(tmp20);
+
+    display.setTextSize(2);
+    
+  break;
+
+  case 2:
+    display.clearDisplay();
+    display.setTextColor(WHITE);
+    display.setTextSize(2);
+    display.setCursor(0,0);
+    display.print("Lampa 2");    
+    display.setCursor(90,0);
+    if ( Lampa2.run == 0)
+    {
+      display.print("OFF");
+    }
+    else
+    {
+      display.print("ON");
+    }  
+    display.setTextSize(1);
+    display.setTextColor(WHITE);
+    display.setCursor(0, 0);
+    sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa2.on_g_start, Lampa2.on_m_start, Lampa2.on_g_stop, Lampa2.on_m_stop);
+    display.setTextSize(1);
+    display.setCursor(0,20);
+    display.print(tmp20);
+    display.setCursor(0,30);
+    sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa2.off_g_start, Lampa2.off_m_start, Lampa2.off_g_stop, Lampa2.off_m_stop);
+    display.print(tmp20);
+    sprintf(tmp20, "%04d,max:%04d", Lampa2.natezenie,Lampa2.natezenie_max);
+    display.setCursor(0,40);
+    display.print(tmp20);
+
+    display.setTextSize(2);
+    
+  break;
+
+  case 3:
+    display.clearDisplay();
+    display.setTextColor(WHITE);
+    display.setTextSize(2);
+    display.setCursor(0,0);
+    display.print("Lampa 3");    
+    display.setCursor(90,0);
+    if ( Lampa3.run == 0)
+    {
+      display.print("OFF");
+    }
+    else
+    {
+      display.print("ON");
+    }  
+    display.setTextSize(1);
+    display.setTextColor(WHITE);
+    display.setCursor(0, 0);
+    sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa3.on_g_start, Lampa3.on_m_start, Lampa3.on_g_stop, Lampa3.on_m_stop);
+    display.setTextSize(1);
+    display.setCursor(0,20);
+    display.print(tmp20);
+    display.setCursor(0,30);
+    sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa3.off_g_start, Lampa3.off_m_start, Lampa3.off_g_stop, Lampa3.off_m_stop);
+    display.print(tmp20);
+    sprintf(tmp20, "%04d,max:%04d", Lampa3.natezenie,Lampa3.natezenie_max);
+    display.setCursor(0,40);
+    display.print(tmp20);
+
+    display.setTextSize(2);
+    
+  break;
+
+  case 4:
+    display.clearDisplay();
+    display.setTextColor(WHITE);
+    display.setTextSize(2);
+    display.setCursor(0,0);
+    display.print("Lampa 4");    
+    display.setCursor(90,0);
+    if ( Lampa3.run == 0)
+    {
+      display.print("OFF");
+    }
+    else
+    {
+      display.print("ON");
+    }  
+    display.setTextSize(1);
+    display.setTextColor(WHITE);
+    display.setCursor(0, 0);
+    sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa4.on_g_start, Lampa4.on_m_start, Lampa4.on_g_stop, Lampa4.on_m_stop);
+    display.setTextSize(1);
+    display.setCursor(0,20);
+    display.print(tmp20);
+    display.setCursor(0,30);
+    sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa4.off_g_start, Lampa4.off_m_start, Lampa4.off_g_stop, Lampa4.off_m_stop);
+    display.print(tmp20);
+    sprintf(tmp20, "%04d,max:%04d", Lampa4.natezenie,Lampa4.natezenie_max);
+    display.setCursor(0,40);
+    display.print(tmp20);
+
+    display.setTextSize(2);
+    
+  break;
+
+  case 5:
+    display.clearDisplay();
+    display.setTextColor(WHITE);
+    display.setTextSize(2);
+    display.setCursor(0,0);
+    display.print("Lampa 5");    
+    display.setCursor(90,0);
+    if ( Lampa3.run == 0)
+    {
+      display.print("OFF");
+    }
+    else
+    {
+      display.print("ON");
+    }  
+    display.setTextSize(1);
+    display.setTextColor(WHITE);
+    display.setCursor(0, 0);
+    sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa5.on_g_start, Lampa5.on_m_start, Lampa5.on_g_stop, Lampa5.on_m_stop);
+    display.setTextSize(1);
+    display.setCursor(0,20);
+    display.print(tmp20);
+    display.setCursor(0,30);
+    sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa5.off_g_start, Lampa5.off_m_start, Lampa5.off_g_stop, Lampa5.off_m_stop);
+    display.print(tmp20);
+    sprintf(tmp20, "%04d,max:%04d", Lampa5.natezenie,Lampa5.natezenie_max);
+    display.setCursor(0,40);
+    display.print(tmp20);
+
+    display.setTextSize(2);
+    
+  break;
+
+  case 6:
+    display.clearDisplay();
+    display.setTextColor(WHITE);
+    display.setTextSize(2);
+    display.setCursor(0,0);
+    display.print("Lampa 6");    
+    display.setCursor(90,0);
+    if ( Lampa3.run == 0)
+    {
+      display.print("OFF");
+    }
+    else
+    {
+      display.print("ON");
+    }  
+    display.setTextSize(1);
+    display.setTextColor(WHITE);
+    display.setCursor(0, 0);
+    sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa6.on_g_start, Lampa6.on_m_start, Lampa6.on_g_stop, Lampa6.on_m_stop);
+    display.setTextSize(1);
+    display.setCursor(0,20);
+    display.print(tmp20);
+    display.setCursor(0,30);
+    sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa6.off_g_start, Lampa6.off_m_start, Lampa6.off_g_stop, Lampa6.off_m_stop);
+    display.print(tmp20);
+    sprintf(tmp20, "%04d,max:%04d", Lampa6.natezenie,Lampa6.natezenie_max);
+    display.setCursor(0,40);
+    display.print(tmp20);
+
+    display.setTextSize(2);
+    
+  break;
+
+  case 7:
+    display.clearDisplay();
+    display.setTextColor(WHITE);
+    display.setTextSize(2);
+    display.setCursor(0,0);
+    display.print("Tlo  ");    
+    display.setCursor(90,0);
+    if ( Lampa3.run == 0)
+    {
+      display.print("OFF");
+    }
+    else
+    {
+      display.print("ON");
+    }  
+    display.setTextSize(1);
+    display.setTextColor(WHITE);
+    display.setCursor(0, 0);
+    sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa7.on_g_start, Lampa7.on_m_start, Lampa7.on_g_stop, Lampa7.on_m_stop);
+    display.setTextSize(1);
+    display.setCursor(0,20);
+    display.print(tmp20);
+    display.setCursor(0,30);
+    sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa7.off_g_start, Lampa7.off_m_start, Lampa7.off_g_stop, Lampa7.off_m_stop);
+    display.print(tmp20);
+    sprintf(tmp20, "%04d,max:%04d", Lampa7.natezenie,Lampa7.natezenie_max);
+    display.setCursor(0,40);
+    display.print(tmp20);
+
+    display.setTextSize(2);
+    
+  break;
+
+
+
+  default:
+    display.clearDisplay();
+    display.setTextColor(WHITE);
+    display.setTextSize(2);
+    display.setCursor(0, 0);
+    display.print(now.timestamp(DateTime::TIMESTAMP_TIME));
+    display.setCursor(0, 20);
+    display.print(now.timestamp(DateTime::TIMESTAMP_DATE));
+    break;
+  }
+  display.display();
+  
+  delay(2000);
+  
+  if (ekran < 8)
+  {
+    ekran ++;
+  }
+  else
+  {
+    ekran = 0;
+  }
+}
+
+
 void loop()
 {
 
@@ -533,24 +812,26 @@ void loop()
   {
     now = rtc.now();
 
-    display.clearDisplay();
-    display.setTextColor(WHITE);
-    display.setTextSize(2);
-    display.setCursor(0, 0);
-    display.print(now.timestamp(DateTime::TIMESTAMP_TIME));
-    display.setCursor(0, 20);
-    display.print(now.timestamp(DateTime::TIMESTAMP_DATE));
+    // display.clearDisplay();
+    // display.setTextColor(WHITE);
+    // display.setTextSize(2);
+    // display.setCursor(0, 0);
+    // display.print(now.timestamp(DateTime::TIMESTAMP_TIME));
+    // display.setCursor(0, 20);
+    // display.print(now.timestamp(DateTime::TIMESTAMP_DATE));
 
-    display.setCursor(0, 40);
-    display.print("N");
-    display.setCursor(10, 40);
-    display.print(String(dutyCycle));
-    display.setCursor(0, 60);
-    display.print("G");
-    display.setCursor(65, 60);
-    display.print(String(gamma_20[dutyCycle]));
+    // display.setCursor(0, 40);
+    // display.print("N");
+    // display.setCursor(10, 40);
+    // display.print(String(dutyCycle));
+    // display.setCursor(0, 60);
+    // display.print("G");
+    // display.setCursor(65, 60);
+    // display.print(String(gamma_20[dutyCycle]));
 
-    display.display();
+    // display.display();
+
+    dajEkran();
 
     //  Serial.print( dutyCycle );
     //  Serial.print( "/" );
@@ -570,20 +851,20 @@ void loop()
   ledcWrite(Lampa6.pPWMChannel, Lampa6.setPWM());
   ledcWrite(Lampa7.pPWMChannel, Lampa7.setPWM());
 
-  /* Increasing the LED brightness with PWM */
-  for (dutyCycle = 0; dutyCycle < MAX_DUTY_CYCLE; dutyCycle++)
-  {
-    ledcWrite(Lampa1.pPWMChannel, dutyCycle);
-    ledcWrite(Lampa2.pPWMChannel, gamma_20[dutyCycle]);
-    delay(1);
-    // delayMicroseconds(100);
-  }
-  /* Decreasing the LED brightness with PWM */
-  for (dutyCycle = MAX_DUTY_CYCLE; dutyCycle >= 0; dutyCycle--)
-  {
-    ledcWrite(Lampa1.pPWMChannel, dutyCycle);
-    ledcWrite(Lampa2.pPWMChannel, gamma_20[dutyCycle]);
-    delay(1);
-    // delayMicroseconds(100);
-  }
+  // /* Increasing the LED brightness with PWM */
+  // for (dutyCycle = 0; dutyCycle < MAX_DUTY_CYCLE; dutyCycle++)
+  // {
+  //   ledcWrite(Lampa1.pPWMChannel, dutyCycle);
+  //   ledcWrite(Lampa2.pPWMChannel, gamma_20[dutyCycle]);
+  //   delay(1);
+  //   // delayMicroseconds(100);
+  // }
+  // /* Decreasing the LED brightness with PWM */
+  // for (dutyCycle = MAX_DUTY_CYCLE; dutyCycle >= 0; dutyCycle--)
+  // {
+  //   ledcWrite(Lampa1.pPWMChannel, dutyCycle);
+  //   ledcWrite(Lampa2.pPWMChannel, gamma_20[dutyCycle]);
+  //   delay(1);
+  //   // delayMicroseconds(100);
+  // }
 }
