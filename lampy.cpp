@@ -205,14 +205,11 @@ int Lampa::setPWM()
       }
       fPWM = (natezenie_max * minuty) / off_min;
       iPWM = (unsigned int)(fPWM + 0.5);
-      // cPWM = iPWM;
       iPWM = natezenie_max - iPWM;
       if (iPWM < 0)
         iPWM = 0;
-      // cPWM = f_pwm_kolor_max - cPWM;
-      // if ( cPWM < 0 ) cPWM = 0;
     }
-    natezenie = gamma_22[iPWM];
+    natezenie = gamma_22[1023-iPWM];
     if (iPWM == 0)
     {
       run = 0;
@@ -230,7 +227,8 @@ int Lampa::setPWM()
     // //  Serial.print("K=");
     // //  Serial.println( cPWM );
     // }
-    return gamma_22[1023 - iPWM];
+    //return gamma_22[1023 - iPWM];
+    return gamma_22[iPWM];
     //return 1023 - iPWM; 
   }
   else
@@ -249,7 +247,9 @@ int Lampa::setPWM()
       run = 1;
     }
 
-     return gamma_22[1023 - natezenie_manual];
+     //return gamma_22[1023 - natezenie_manual];
+     natezenie = gamma_22[1023-natezenie_manual];
+     return gamma_22[natezenie_manual];
      //return 1023 - natezenie_manual;
   }
 }

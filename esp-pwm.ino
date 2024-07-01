@@ -12,7 +12,7 @@
 
 RTC_DS3231 rtc;
 char daysOfTheWeek[7][5] = {"NIE", "PON", "WTO", "ŚRO", "CZW", "PIĄ", "SOB"};
-char daysOfTheWeekAll[7][15] = {"Niedziela", "Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota"};
+char daysOfTheWeekAll[7][15] = {"Niedziela", "Poniedzialek", "Wtorek", "Sroda", "Czwartek", "Piatek", "Sobota"};
 int pl_week[7] = {1, 2, 3, 4, 5, 6, 0};
 DateTime now;
 
@@ -22,6 +22,8 @@ DateTime now;
 #define OLED_RESET -1    // Reset pin # (or -1 if sharing reset pin)
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+
 BluetoothSerial SerialBT;
 
 #define LEDPin1 12
@@ -478,6 +480,7 @@ void setup()
     for (;;)
       ; // Don't proceed, loop forever
   }
+  
 
   display.clearDisplay();
 
@@ -542,6 +545,11 @@ void dajEkran()
     display.print(now.timestamp(DateTime::TIMESTAMP_TIME));
     display.setCursor(0, 20);
     display.print(now.timestamp(DateTime::TIMESTAMP_DATE));
+    display.setTextSize(1);
+    display.setCursor(0, 40);
+    display.print(daysOfTheWeekAll[now.dayOfTheWeek()]);
+    display.setTextSize(2);
+
     break;
   case 1:
     display.clearDisplay();
@@ -784,6 +792,11 @@ void dajEkran()
     display.print(now.timestamp(DateTime::TIMESTAMP_TIME));
     display.setCursor(0, 20);
     display.print(now.timestamp(DateTime::TIMESTAMP_DATE));
+    display.setTextSize(1);
+    display.setCursor(0, 40);
+    display.print(daysOfTheWeekAll[now.dayOfTheWeek()]);
+    display.setTextSize(2);
+
     break;
   }
   display.display();
