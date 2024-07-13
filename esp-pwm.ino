@@ -29,10 +29,10 @@ BluetoothSerial SerialBT;
 #define LEDPin1 12
 #define LEDPin2 13
 #define LEDPin3 14
-#define LEDPin4 27
-#define LEDPin5 26
-#define LEDPin6 25
-#define LEDPin7 33 // panel tło
+#define LEDPin4 26
+#define LEDPin5 25
+#define LEDPin6 33
+#define LEDPin7 32 // panel tło
 
 #define RGB_red   16
 #define RGB_green 17
@@ -71,6 +71,50 @@ Lampa Lampa4(LEDPin4, PWMChannel4, EE_L4_ON_G_START, EE_L4_ON_M_START, EE_L4_ON_
 Lampa Lampa5(LEDPin5, PWMChannel5, EE_L5_ON_G_START, EE_L5_ON_M_START, EE_L5_ON_G_STOP, EE_L5_ON_M_STOP, EE_L5_OFF_G_START, EE_L5_OFF_M_START, EE_L5_OFF_G_STOP, EE_L5_OFF_M_STOP, EE_L5_NAT_MAX, EE_L5_NAT_MAN, EE_L5_TRYB);
 Lampa Lampa6(LEDPin6, PWMChannel6, EE_L6_ON_G_START, EE_L6_ON_M_START, EE_L6_ON_G_STOP, EE_L6_ON_M_STOP, EE_L6_OFF_G_START, EE_L6_OFF_M_START, EE_L6_OFF_G_STOP, EE_L6_OFF_M_STOP, EE_L6_NAT_MAX, EE_L6_NAT_MAN, EE_L6_TRYB);
 Lampa Lampa7(LEDPin7, PWMChannel7, EE_L7_ON_G_START, EE_L7_ON_M_START, EE_L7_ON_G_STOP, EE_L7_ON_M_STOP, EE_L7_OFF_G_START, EE_L7_OFF_M_START, EE_L7_OFF_G_STOP, EE_L7_OFF_M_STOP, EE_L7_NAT_MAX, EE_L7_NAT_MAN, EE_L7_TRYB);
+
+void startLamp()
+{  
+  int i = 0;
+  //gamma_22[1023-iPWM];
+  for (i == 0; i<=1023; i++)  
+  {    
+    if (Lampa1.natezenie_max >= i)
+    {
+      ledcWrite(Lampa1.pPWMChannel, gamma_22[i]);
+    }
+    if (Lampa2.natezenie_max >= i)
+    {
+      ledcWrite(Lampa2.pPWMChannel, gamma_22[i]);
+    }
+    if (Lampa3.natezenie_max >= i)
+    {
+      ledcWrite(Lampa3.pPWMChannel, gamma_22[i]);
+    }
+    if (Lampa4.natezenie_max >= i)
+    {
+      ledcWrite(Lampa4.pPWMChannel, gamma_22[i]);
+    }
+    if (Lampa5.natezenie_max >= i)
+    {
+      ledcWrite(Lampa5.pPWMChannel, gamma_22[i]);
+    }
+    if (Lampa6.natezenie_max >= i)
+    {
+      ledcWrite(Lampa6.pPWMChannel, gamma_22[i]);
+    }
+    if (Lampa7.natezenie_max >= i)
+    {
+      ledcWrite(Lampa7.pPWMChannel, gamma_22[i]);
+    }
+    delay(100);
+    Serial.println(i);
+    Serial.println(gamma_22[i]);
+  }
+
+ return;
+
+}
+
 
 int setDataTime()
 {
@@ -526,6 +570,9 @@ void setup()
   display.print(now.timestamp(DateTime::TIMESTAMP_TIME));
   display.setCursor(0, 20);
   display.print(now.timestamp(DateTime::TIMESTAMP_DATE));
+
+  startLamp();
+
 }
 
 

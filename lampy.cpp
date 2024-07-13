@@ -234,10 +234,10 @@ int Lampa::setPWM()
   else
   {
     //ledcWrite(_PWMChannel, gamma_22[natezenie_manual]);
-     Serial.print("MANUAL setPWM=");
-     Serial.println(natezenie_manual);
-     Serial.println(_PWMChannel);
-     Serial.println(ledcRead(_PWMChannel));
+    //  Serial.print("MANUAL setPWM=");
+    //  Serial.println(natezenie_manual);
+    //  Serial.println(_PWMChannel);
+    //  Serial.println(ledcRead(_PWMChannel));
     if (natezenie_manual == 0)
     {
       run = 0;
