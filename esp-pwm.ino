@@ -75,6 +75,8 @@ Lampa Lampa7(LEDPin7, PWMChannel7, EE_L7_ON_G_START, EE_L7_ON_M_START, EE_L7_ON_
 void startLamp()
 {  
   int i = 0;
+  int ii = 0;
+  char tmp20[20];
   //gamma_22[1023-iPWM];
   for (i == 0; i<=1023; i++)  
   {    
@@ -107,8 +109,23 @@ void startLamp()
       ledcWrite(Lampa7.pPWMChannel, gamma_22[i]);
     }
     delay(100);
-    Serial.println(i);
-    Serial.println(gamma_22[i]);
+    ii++;
+    if ( ii == 10 )
+    {
+      display.clearDisplay();
+      display.setTextColor(WHITE);
+      display.setTextSize(2);
+      display.setCursor(0, 0);
+      display.print("Start lamp");
+      display.setCursor(0, 20);
+      sprintf(tmp20, "%04d/%04d", i,1023);
+      display.print(tmp20);
+      
+      // display.print(now.timestamp(DateTime::TIMESTAMP_DATE));
+      ii = 0;
+    }
+    // Serial.println(i);
+    // Serial.println(gamma_22[i]);
   }
 
  return;
