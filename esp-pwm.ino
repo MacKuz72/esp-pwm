@@ -124,7 +124,7 @@ void startLamp()
     }
     delay(100);
     ii++;
-    Serial.println(ii);
+    // Serial.println(ii);
     if ( ii > 10 )
     {
       display.clearDisplay();
@@ -901,30 +901,7 @@ void loop()
   {
     now = rtc.now();
 
-    // display.clearDisplay();
-    // display.setTextColor(WHITE);
-    // display.setTextSize(2);
-    // display.setCursor(0, 0);
-    // display.print(now.timestamp(DateTime::TIMESTAMP_TIME));
-    // display.setCursor(0, 20);
-    // display.print(now.timestamp(DateTime::TIMESTAMP_DATE));
-
-    // display.setCursor(0, 40);
-    // display.print("N");
-    // display.setCursor(10, 40);
-    // display.print(String(dutyCycle));
-    // display.setCursor(0, 60);
-    // display.print("G");
-    // display.setCursor(65, 60);
-    // display.print(String(gamma_20[dutyCycle]));
-
-    // display.display();
-
     dajEkran();
-
-    //  Serial.print( dutyCycle );
-    //  Serial.print( "/" );
-    //  Serial.println( gamma_20[dutyCycle] );
 
     SerialBT.println(now.timestamp(DateTime::TIMESTAMP_TIME));
 
@@ -940,20 +917,4 @@ void loop()
   ledcWrite(Lampa6.pPWMChannel, Lampa6.setPWM());
   ledcWrite(Lampa7.pPWMChannel, Lampa7.setPWM());
 
-  // /* Increasing the LED brightness with PWM */
-  // for (dutyCycle = 0; dutyCycle < MAX_DUTY_CYCLE; dutyCycle++)
-  // {
-  //   ledcWrite(Lampa1.pPWMChannel, dutyCycle);
-  //   ledcWrite(Lampa2.pPWMChannel, gamma_20[dutyCycle]);
-  //   delay(1);
-  //   // delayMicroseconds(100);
-  // }
-  // /* Decreasing the LED brightness with PWM */
-  // for (dutyCycle = MAX_DUTY_CYCLE; dutyCycle >= 0; dutyCycle--)
-  // {
-  //   ledcWrite(Lampa1.pPWMChannel, dutyCycle);
-  //   ledcWrite(Lampa2.pPWMChannel, gamma_20[dutyCycle]);
-  //   delay(1);
-  //   // delayMicroseconds(100);
-  // }
 }
