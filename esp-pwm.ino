@@ -76,35 +76,49 @@ void startLamp()
 {  
   int i = 0;
   int ii = 0;
+  int l1 = 0;
+  int l2 = 0;
+  int l3 = 0;
+  int l4 = 0;
+  int l5 = 0;
+  int l6 = 0;
+  int l7 = 0;
+  l1 = Lampa1.setPWM();
+  l2 = Lampa2.setPWM();
+  l3 = Lampa3.setPWM();
+  l4 = Lampa4.setPWM();
+  l5 = Lampa5.setPWM();
+  l6 = Lampa6.setPWM();
+  l7 = Lampa7.setPWM();
   char tmp20[20];
   //gamma_22[1023-iPWM];
   for (i == 0; i<=1023; i++)  
   {    
-    if (Lampa1.natezenie_max >= i)
+    if (l1 >= i)
     {
       ledcWrite(Lampa1.pPWMChannel, gamma_22[i]);
     }
-    if (Lampa2.natezenie_max >= i)
+    if (l2 >= i)
     {
       ledcWrite(Lampa2.pPWMChannel, gamma_22[i]);
     }
-    if (Lampa3.natezenie_max >= i)
+    if (l3 >= i)
     {
       ledcWrite(Lampa3.pPWMChannel, gamma_22[i]);
     }
-    if (Lampa4.natezenie_max >= i)
+    if (l4 >= i)
     {
       ledcWrite(Lampa4.pPWMChannel, gamma_22[i]);
     }
-    if (Lampa5.natezenie_max >= i)
+    if (l5 >= i)
     {
       ledcWrite(Lampa5.pPWMChannel, gamma_22[i]);
     }
-    if (Lampa6.natezenie_max >= i)
+    if (l6 >= i)
     {
       ledcWrite(Lampa6.pPWMChannel, gamma_22[i]);
     }
-    if (Lampa7.natezenie_max >= i)
+    if (l7 >= i)
     {
       ledcWrite(Lampa7.pPWMChannel, gamma_22[i]);
     }
@@ -121,13 +135,9 @@ void startLamp()
       display.setCursor(0, 20);
       sprintf(tmp20, "%04d/%04d", i,1023);
       display.print(tmp20);
-      // display.print(now.timestamp(DateTime::TIMESTAMP_DATE));
       display.display();
       ii = 0;
-      // Serial.println(tmp20);
     }
-    // Serial.println(i);
-    
   }
 
  return;
