@@ -110,7 +110,8 @@ void startLamp()
     }
     delay(100);
     ii++;
-    if ( ii == 10 )
+    Serial.println(ii);
+    if ( ii > 10 )
     {
       display.clearDisplay();
       display.setTextColor(WHITE);
@@ -120,12 +121,13 @@ void startLamp()
       display.setCursor(0, 20);
       sprintf(tmp20, "%04d/%04d", i,1023);
       display.print(tmp20);
-      
       // display.print(now.timestamp(DateTime::TIMESTAMP_DATE));
+      display.display();
       ii = 0;
+      // Serial.println(tmp20);
     }
     // Serial.println(i);
-    // Serial.println(gamma_22[i]);
+    
   }
 
  return;
