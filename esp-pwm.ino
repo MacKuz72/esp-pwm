@@ -83,6 +83,20 @@ void startLamp()
   int l5 = 0;
   int l6 = 0;
   int l7 = 0;
+  l1= Lampa1.setPWM();
+  l2= Lampa2.setPWM();
+  l3= Lampa3.setPWM();
+  l4= Lampa4.setPWM();
+  l5= Lampa5.setPWM();
+  l6= Lampa6.setPWM();
+  l7= Lampa7.setPWM();
+  l1=Lampa1.stanPWM;
+  l2=Lampa2.stanPWM;
+  l3=Lampa3.stanPWM;
+  l4=Lampa4.stanPWM;
+  l5=Lampa5.stanPWM;
+  l6=Lampa6.stanPWM;
+  l7=Lampa7.stanPWM;
   
   char tmp20[20];
   //gamma_22[1023-iPWM];
