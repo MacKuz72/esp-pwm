@@ -228,6 +228,7 @@ int Lampa::setPWM()
     // //  Serial.println( cPWM );
     // }
     //return gamma_22[1023 - iPWM];
+    stanPWM = iPWM;
     return gamma_22[iPWM];
     //return 1023 - iPWM; 
   }
@@ -249,6 +250,7 @@ int Lampa::setPWM()
 
      //return gamma_22[1023 - natezenie_manual];
      natezenie = gamma_22[1023-natezenie_manual];
+     stanPWM = natezenie;
      return gamma_22[natezenie_manual];
      //return 1023 - natezenie_manual;
   }

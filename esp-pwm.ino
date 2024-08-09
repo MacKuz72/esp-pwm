@@ -83,13 +83,7 @@ void startLamp()
   int l5 = 0;
   int l6 = 0;
   int l7 = 0;
-  l1 = Lampa1.setPWM();
-  l2 = Lampa2.setPWM();
-  l3 = Lampa3.setPWM();
-  l4 = Lampa4.setPWM();
-  l5 = Lampa5.setPWM();
-  l6 = Lampa6.setPWM();
-  l7 = Lampa7.setPWM();
+  
   char tmp20[20];
   //gamma_22[1023-iPWM];
   for (i == 0; i<=1023; i++)  
@@ -122,7 +116,7 @@ void startLamp()
     {
       ledcWrite(Lampa7.pPWMChannel, gamma_22[i]);
     }
-    delay(100);
+    delay(20);
     ii++;
     // Serial.println(ii);
     if ( ii > 10 )
@@ -652,7 +646,7 @@ void dajEkran()
     display.setCursor(0,30);
     sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa1.off_g_start, Lampa1.off_m_start, Lampa1.off_g_stop, Lampa1.off_m_stop);
     display.print(tmp20);
-    sprintf(tmp20, "%04d,max:%04d", Lampa1.natezenie,Lampa1.natezenie_max);
+    sprintf(tmp20, "%04d,max:%04d", Lampa1.stanPWM,Lampa1.natezenie_max);
     display.setCursor(0,40);
     display.print(tmp20);
 
@@ -685,7 +679,7 @@ void dajEkran()
     display.setCursor(0,30);
     sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa2.off_g_start, Lampa2.off_m_start, Lampa2.off_g_stop, Lampa2.off_m_stop);
     display.print(tmp20);
-    sprintf(tmp20, "%04d,max:%04d", Lampa2.natezenie,Lampa2.natezenie_max);
+    sprintf(tmp20, "%04d,max:%04d", Lampa2.stanPWM,Lampa2.natezenie_max);
     display.setCursor(0,40);
     display.print(tmp20);
 
@@ -718,7 +712,7 @@ void dajEkran()
     display.setCursor(0,30);
     sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa3.off_g_start, Lampa3.off_m_start, Lampa3.off_g_stop, Lampa3.off_m_stop);
     display.print(tmp20);
-    sprintf(tmp20, "%04d,max:%04d", Lampa3.natezenie,Lampa3.natezenie_max);
+    sprintf(tmp20, "%04d,max:%04d", Lampa3.stanPWM,Lampa3.natezenie_max);
     display.setCursor(0,40);
     display.print(tmp20);
 
@@ -751,7 +745,7 @@ void dajEkran()
     display.setCursor(0,30);
     sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa4.off_g_start, Lampa4.off_m_start, Lampa4.off_g_stop, Lampa4.off_m_stop);
     display.print(tmp20);
-    sprintf(tmp20, "%04d,max:%04d", Lampa4.natezenie,Lampa4.natezenie_max);
+    sprintf(tmp20, "%04d,max:%04d", Lampa4.stanPWM,Lampa4.natezenie_max);
     display.setCursor(0,40);
     display.print(tmp20);
 
@@ -784,7 +778,7 @@ void dajEkran()
     display.setCursor(0,30);
     sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa5.off_g_start, Lampa5.off_m_start, Lampa5.off_g_stop, Lampa5.off_m_stop);
     display.print(tmp20);
-    sprintf(tmp20, "%04d,max:%04d", Lampa5.natezenie,Lampa5.natezenie_max);
+    sprintf(tmp20, "%04d,max:%04d", Lampa5.stanPWM,Lampa5.natezenie_max);
     display.setCursor(0,40);
     display.print(tmp20);
 
@@ -817,7 +811,7 @@ void dajEkran()
     display.setCursor(0,30);
     sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa6.off_g_start, Lampa6.off_m_start, Lampa6.off_g_stop, Lampa6.off_m_stop);
     display.print(tmp20);
-    sprintf(tmp20, "%04d,max:%04d", Lampa6.natezenie,Lampa6.natezenie_max);
+    sprintf(tmp20, "%04d,max:%04d", Lampa6.stanPWM,Lampa6.natezenie_max);
     display.setCursor(0,40);
     display.print(tmp20);
 
@@ -850,7 +844,7 @@ void dajEkran()
     display.setCursor(0,30);
     sprintf(tmp20, "%02d:%02d-%02d:%02d", Lampa7.off_g_start, Lampa7.off_m_start, Lampa7.off_g_stop, Lampa7.off_m_stop);
     display.print(tmp20);
-    sprintf(tmp20, "%04d,max:%04d", Lampa7.natezenie,Lampa7.natezenie_max);
+    sprintf(tmp20, "%04d,max:%04d", Lampa7.stanPWM,Lampa7.natezenie_max);
     display.setCursor(0,40);
     display.print(tmp20);
 

@@ -117,6 +117,7 @@ class Lampa {
     int natezenie;
     uint8_t tryb; 
     bool run;
+    int stanPWM;
     Lampa( int pin, int PWMChannel, uint8_t EE_on_g_start, uint8_t EE_on_m_start, uint8_t EE_on_g_stop, uint8_t EE_on_m_stop, uint8_t EE_off_g_start, uint8_t EE_off_m_start, uint8_t EE_off_g_stop, uint8_t EE_off_m_stop, uint8_t EE_natezenie_max, uint8_t EE_natezenie_manual, uint8_t EE_tryb );
     //void on();
     //void off();
