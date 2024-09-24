@@ -580,21 +580,30 @@ void setup()
   Lampa7.readLampa();
   Lampa7.printLampa();
 
-  ledcSetup(Lampa1.pPWMChannel, PWMFreq, PWMResolution);
-  ledcSetup(Lampa2.pPWMChannel, PWMFreq, PWMResolution);
-  ledcSetup(Lampa3.pPWMChannel, PWMFreq, PWMResolution);
-  ledcSetup(Lampa4.pPWMChannel, PWMFreq, PWMResolution);
-  ledcSetup(Lampa5.pPWMChannel, PWMFreq, PWMResolution);
-  ledcSetup(Lampa6.pPWMChannel, PWMFreq, PWMResolution);
-  ledcSetup(Lampa7.pPWMChannel, PWMFreq, PWMResolution);
+//  ledcSetup(Lampa1.pPWMChannel, PWMFreq, PWMResolution);
+//  ledcSetup(Lampa2.pPWMChannel, PWMFreq, PWMResolution);
+//  ledcSetup(Lampa3.pPWMChannel, PWMFreq, PWMResolution);
+//  ledcSetup(Lampa4.pPWMChannel, PWMFreq, PWMResolution);
+//  ledcSetup(Lampa5.pPWMChannel, PWMFreq, PWMResolution);
+//  ledcSetup(Lampa6.pPWMChannel, PWMFreq, PWMResolution);
+//  ledcSetup(Lampa7.pPWMChannel, PWMFreq, PWMResolution);
+//
+//  ledcAttachPin(Lampa1.ppin, Lampa1.pPWMChannel);
+//  ledcAttachPin(Lampa2.ppin, Lampa2.pPWMChannel);
+//  ledcAttachPin(Lampa3.ppin, Lampa3.pPWMChannel);
+//  ledcAttachPin(Lampa4.ppin, Lampa4.pPWMChannel);
+//  ledcAttachPin(Lampa5.ppin, Lampa5.pPWMChannel);
+//  ledcAttachPin(Lampa6.ppin, Lampa6.pPWMChannel);
+//  ledcAttachPin(Lampa7.ppin, Lampa7.pPWMChannel);
 
-  ledcAttachPin(Lampa1.ppin, Lampa1.pPWMChannel);
-  ledcAttachPin(Lampa2.ppin, Lampa2.pPWMChannel);
-  ledcAttachPin(Lampa3.ppin, Lampa3.pPWMChannel);
-  ledcAttachPin(Lampa4.ppin, Lampa4.pPWMChannel);
-  ledcAttachPin(Lampa5.ppin, Lampa5.pPWMChannel);
-  ledcAttachPin(Lampa6.ppin, Lampa6.pPWMChannel);
-  ledcAttachPin(Lampa7.ppin, Lampa7.pPWMChannel);
+  //ledcAttachChannel(uint8_t pin, uint32_t freq, uint8_t resolution, int8_t channel);
+  ledcAttachChannel(Lampa1.ppin, PWMFreq, PWMResolution, Lampa1.pPWMChannel);
+  ledcAttachChannel(Lampa2.ppin, PWMFreq, PWMResolution, Lampa2.pPWMChannel);
+  ledcAttachChannel(Lampa3.ppin, PWMFreq, PWMResolution, Lampa3.pPWMChannel);
+  ledcAttachChannel(Lampa4.ppin, PWMFreq, PWMResolution, Lampa4.pPWMChannel);
+  ledcAttachChannel(Lampa5.ppin, PWMFreq, PWMResolution, Lampa5.pPWMChannel);
+  ledcAttachChannel(Lampa6.ppin, PWMFreq, PWMResolution, Lampa6.pPWMChannel);
+  ledcAttachChannel(Lampa7.ppin, PWMFreq, PWMResolution, Lampa7.pPWMChannel);
 
   now = rtc.now();
   Serial.println(now.timestamp(DateTime::TIMESTAMP_TIME));

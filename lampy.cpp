@@ -9,7 +9,7 @@
 #include <time.h>
 #include <RTClib.h>
 #include <EEPROM.h>
-
+#include <algorithm>
 
 extern DateTime now;
 // extern Lampa lampa_biala;
@@ -306,4 +306,81 @@ int Lampa::setPWM()
 //   }
 
 //   return;
+// }
+
+
+
+
+// int Lampa::setPWM() {
+//     int godz = now.hour();
+//     int minn = now.minute();
+//     float roznica = 0;
+//     float minuty = 0;
+//     int iPWM = 0;
+//     float fPWM = 0;
+
+//     // Oblicz różnicę minut dla trybu
+//     auto calculateMinDifference = [](int godz_start, int min_start, int godz_stop, int min_stop) -> float {
+//         return (godz_stop - godz_start) * 60 - min_start + min_stop;
+//     };
+
+//     // Sprawdź, czy czas jest w zakresie włączania
+//     auto isInRange = [&](int godz_start, int min_start, int godz_stop, int min_stop) -> bool {
+//         return (godz > godz_start || (godz == godz_start && minn >= min_start)) &&
+//                (godz < godz_stop || (godz == godz_stop && minn <= min_stop));
+//     };
+
+//     if (tryb == 1) {
+//         float on_min = calculateMinDifference(on_g_start, on_m_start, on_g_stop, on_m_stop);
+//         float off_min = calculateMinDifference(off_g_start, off_m_start, off_g_stop, off_m_stop);
+
+//         if (godz > on_g_stop && godz < off_g_start) {
+//             iPWM = natezenie_max;
+//         } else if (godz == on_g_stop && minn > on_m_stop) {
+//             iPWM = natezenie_max;
+//         } else if (godz == off_g_start && minn < off_m_start) {
+//             iPWM = natezenie_max;
+//         } else if (godz >= off_g_stop && minn > off_m_stop) {
+//             iPWM = 0;
+//         } else if (godz <= on_g_start && minn > on_m_start) {
+//             iPWM = 0;
+//         } else if (isInRange(on_g_start, on_m_start, on_g_stop, on_m_stop)) {
+//             if (godz == on_g_start) {
+//                 minuty = minn - on_m_start;
+//             } else if (godz > on_g_start) {
+//                 roznica = godz - on_g_start;
+//                 minuty = (60 * roznica) + minn - on_m_start;
+//             } else {
+//                 roznica = godz - on_g_start;
+//                 minuty = (60 * roznica) + minn - on_m_start;
+//                 minuty = max(minuty, 0.0f);
+//             }
+//             fPWM = (natezenie_max * minuty) / on_min;
+//             iPWM = static_cast<int>(fPWM + 0.5);
+//             iPWM = min(iPWM, natezenie_max);
+//         } else if (isInRange(off_g_start, off_m_start, off_g_stop, off_m_stop)) {
+//             if (godz == off_g_start) {
+//                 minuty = minn- off_m_start;
+//             } else if (godz > off_g_start) {
+//                 roznica = godz - off_g_start;
+//                 minuty = (60 * roznica) + minn;
+//             } else {
+//                 minuty = off_min - off_m_stop + minn;
+//                 minuty = max(minuty, 0.0f);
+//             }
+//             fPWM = (natezenie_max * minuty) / off_min;
+//             iPWM = natezenie_max - static_cast<int>(fPWM + 0.5);
+//             iPWM = max(iPWM, 0);
+//         }
+
+//         natezenie = gamma_22[1023 - iPWM];
+//         run = (iPWM > 0) ? 1 : 0;
+//         stanPWM = iPWM;
+//         return gamma_22[iPWM];
+//     } else {
+//         natezenie = gamma_22[1023 - natezenie_manual];
+//         run = (natezenie_manual > 0) ? 1 : 0;
+//         stanPWM = natezenie;
+//         return gamma_22[natezenie_manual];
+//     }
 // }
